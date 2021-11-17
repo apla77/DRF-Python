@@ -72,3 +72,4 @@ class AvaliacaoViewSet(
     queryset = Avaliacao.objects.all()
     serializer_class = AvaliacaoSerializer
 
+
