@@ -1,4 +1,4 @@
-from rest_framework import generics, viewsets, mixins
+from rest_framework import generics, viewsets, mixins, permissions
 from rest_framework.generics import get_object_or_404
 
 from rest_framework.decorators import action
@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 from .models import Curso, Avaliacao
 from .serializers import CursoSerializer, AvaliacaoSerializer
-
+from .permissions import EhSuperUser
 """
 API V1
 """
@@ -46,6 +46,7 @@ API V2
 """
 
 class CursoViewSet(viewsets.ModelViewSet):
+    permission_classes = (EhSuperUser, permissions.DjangoModelPermissions, )
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
 
