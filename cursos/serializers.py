@@ -50,6 +50,7 @@ class CursoSerializer(serializers.ModelSerializer):
             'avaliacoes',
             'media_avaliacoes'
         )
+
     def get_media_avaliacoes(self, obj):
         media = obj.avaliacoes.aggregate(Avg('avaliacao')).get('avaliacao__avg')
 
